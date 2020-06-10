@@ -10,6 +10,7 @@
     <AssemblyVersion>2.0.0.0</AssemblyVersion>
     <AssemblyVersion>3.5.0.0</AssemblyVersion>
     <AssemblyVersion>4.0.0.0</AssemblyVersion>
+    <AssemblyVersion>15.1.0.0</AssemblyVersion>
   </AssemblyInfo>
   <Base>
     <BaseTypeName>System.Object</BaseTypeName>
@@ -25,7 +26,9 @@
     </Attribute>
   </Attributes>
   <Docs>
-    <summary>Represents a single <see href="/visualstudio/msbuild/target-element-msbuild">Target</see> element in an MSBuild project.</summary>
+    <summary>
+            This class represents a single target in its parent project.
+            </summary>
     <remarks>To be added.</remarks>
   </Docs>
   <Members>
@@ -42,6 +45,7 @@
         <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>3.5.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
+        <AssemblyVersion>15.1.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>Microsoft.Build.BuildEngine.BuildTask</ReturnType>
@@ -50,8 +54,11 @@
         <Parameter Name="taskName" Type="System.String" />
       </Parameters>
       <Docs>
-        <param name="taskName">The <see cref="T:Microsoft.Build.BuildEngine.BuildTask" /> object that represents the <see langword="Task" /> element to add to the <see langword="Target" /> element.</param>
-        <summary>Adds the specified <see href="/visualstudio/msbuild/task-element-msbuild">Task</see> element to the <see href="/visualstudio/msbuild/target-element-msbuild">Target</see> element.</summary>
+        <param name="taskName" />
+        <summary>
+            Adds a task with the specified name to the end of this target.  This method
+            does all of the work to manipulate the project's XML content.
+            </summary>
         <returns>A <see cref="T:Microsoft.Build.BuildEngine.BuildTask" /> object represents a child <c>Task</c> element of the <c>Target</c> element.</returns>
         <remarks>To be added.</remarks>
       </Docs>
@@ -69,13 +76,16 @@
         <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>3.5.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
+        <AssemblyVersion>15.1.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.String</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>Gets the <c>Condition</c> attribute value of the <see href="/visualstudio/msbuild/target-element-msbuild">Target</see> element.</summary>
-        <value>The <c>Condition</c> attribute value of the <c>Target</c> element.</value>
+        <summary>
+            Accessor for the item's "condition". Returned unevaluated.
+            </summary>
+        <value>Condition string.</value>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -92,13 +102,17 @@
         <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>3.5.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
+        <AssemblyVersion>15.1.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.String</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>Gets the <c>DependsOnTargets</c> attribute value of the <see href="/visualstudio/msbuild/target-element-msbuild">Target</see> element, which is a semicolon-separated list.</summary>
-        <value>The <c>DependsOnTargets</c> attribute value of the <c>Target</c> element.</value>
+        <summary>
+            Gets the target's unevaluated "DependsOnTargets" string.
+            Returns unevaluated.
+            </summary>
+        <value>The raw "DependsOnTargets" string.</value>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -118,14 +132,18 @@
         <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>3.5.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
+        <AssemblyVersion>15.1.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Collections.IEnumerator</ReturnType>
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>Gets an enumerator that iterates through the <see cref="T:Microsoft.Build.BuildEngine.BuildTask" /> objects in the <see cref="T:Microsoft.Build.BuildEngine.Target" />.</summary>
-        <returns>An <see cref="T:System.Collections.IEnumerator" /> for the <see cref="T:Microsoft.Build.BuildEngine.BuildTask" /> objects in the <see cref="T:Microsoft.Build.BuildEngine.Target" />.</returns>
+        <summary>
+            Allows the caller to use a foreach loop to enumerate through the individual 
+            BuildTask objects contained within this Target.
+            </summary>
+        <returns />
         <remarks>
           <format type="text/markdown"><![CDATA[
 
@@ -150,13 +168,17 @@
         <AssemblyName>Microsoft.Build.Engine</AssemblyName>
         <AssemblyVersion>3.5.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
+        <AssemblyVersion>15.1.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.String</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>Gets or sets the items that are to be input into this target.</summary>
-        <value>A string representing the items.</value>
+        <summary>
+            Gets the target's unevaluated "Inputs" string.
+            Returns unevaluated.
+            </summary>
+        <value>The raw "Inputs" string.</value>
         <remarks>
           <format type="text/markdown"><![CDATA[
 
@@ -180,6 +202,7 @@
         <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>3.5.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
+        <AssemblyVersion>15.1.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Attributes>
         <Attribute FrameworkAlternate="netframework-4.0">
@@ -190,9 +213,12 @@
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>Gets a value indicating whether the <see href="/visualstudio/msbuild/target-element-msbuild">Target</see> element was imported into the project.</summary>
-        <value>
-          <see langword="true" /> if the <c>Target</c> element was imported into the project; otherwise, <see langword="false" />.</value>
+        <summary>
+            This returns a boolean telling you whether this particular target
+            was imported from another project, or whether it was defined
+            in the main project.
+            </summary>
+        <value />
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -209,6 +235,7 @@
         <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>3.5.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
+        <AssemblyVersion>15.1.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Attributes>
         <Attribute FrameworkAlternate="netframework-4.0">
@@ -219,8 +246,10 @@
         <ReturnType>System.String</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>Gets the <c>Name</c> attribute value of the <see href="/visualstudio/msbuild/target-element-msbuild">Target</see> element.</summary>
-        <value>The <c>Name</c> attribute value of the <c>Target</c> element.</value>
+        <summary>
+            Gets the target's name as specified in the "Name" attribute. The value of this attribute is never evaluated.
+            </summary>
+        <value>The target name string.</value>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -236,13 +265,17 @@
         <AssemblyName>Microsoft.Build.Engine</AssemblyName>
         <AssemblyVersion>3.5.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
+        <AssemblyVersion>15.1.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.String</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>Gets or sets the expected outputs of this target.</summary>
-        <value>A string representing the outputs.</value>
+        <summary>
+            Gets the target's unevaluated "Outputs" string.
+            Returns unevaluated.
+            </summary>
+        <value>The raw "Outputs" string.</value>
         <remarks>
           <format type="text/markdown"><![CDATA[
 
@@ -266,6 +299,7 @@
         <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>3.5.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
+        <AssemblyVersion>15.1.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -274,8 +308,12 @@
         <Parameter Name="taskElement" Type="Microsoft.Build.BuildEngine.BuildTask" />
       </Parameters>
       <Docs>
-        <param name="taskElement">The <see cref="T:Microsoft.Build.BuildEngine.BuildTask" /> object that represents the <see langword="Task" /> element to remove from the <see langword="Target" /> element.</param>
-        <summary>Removes the specified <see href="/visualstudio/msbuild/task-element-msbuild">Task</see> element from the <see href="/visualstudio/msbuild/target-element-msbuild">Target</see> element.</summary>
+        <param name="taskElement" />
+        <summary>
+            Removes the specified BuildTask from the target.  This method correctly updates
+            the project's XML content, so the task will no longer show up when the project
+            is saved out.
+            </summary>
         <remarks>
           <format type="text/markdown"><![CDATA[
 

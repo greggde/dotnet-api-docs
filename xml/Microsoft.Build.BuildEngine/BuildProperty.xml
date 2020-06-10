@@ -10,6 +10,7 @@
     <AssemblyVersion>2.0.0.0</AssemblyVersion>
     <AssemblyVersion>3.5.0.0</AssemblyVersion>
     <AssemblyVersion>4.0.0.0</AssemblyVersion>
+    <AssemblyVersion>15.1.0.0</AssemblyVersion>
   </AssemblyInfo>
   <Base>
     <BaseTypeName>System.Object</BaseTypeName>
@@ -21,7 +22,12 @@
     </Attribute>
   </Attributes>
   <Docs>
-    <summary>Represents a single property in an MSBuild project.</summary>
+    <summary>
+            This class holds an MSBuild property.  This may be a property that is 
+            represented in the MSBuild project file by an XML element, or it
+            may not be represented in any real XML file (e.g., global properties, 
+            environment properties, etc.)
+            </summary>
     <remarks>
       <format type="text/markdown"><![CDATA[  
   
@@ -33,6 +39,7 @@
   
  ]]></format>
     </remarks>
+    <owner>rgoel</owner>
   </Docs>
   <Members>
     <Member MemberName=".ctor">
@@ -48,6 +55,7 @@
         <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>3.5.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
+        <AssemblyVersion>15.1.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Attributes>
         <Attribute FrameworkAlternate="netframework-4.0">
@@ -59,10 +67,15 @@
         <Parameter Name="propertyValue" Type="System.String" />
       </Parameters>
       <Docs>
-        <param name="propertyName">The property name.</param>
-        <param name="propertyValue">The property value.</param>
-        <summary>Initializes a new instance of the <see cref="T:Microsoft.Build.BuildEngine.BuildProperty" /> class with the specified name and value.</summary>
+        <param name="propertyName" />
+        <param name="propertyValue" />
+        <summary>
+            Constructor, which initializes the property from just the property 
+            name and value, creating it as a "normal" property.  This ends up 
+            creating a new XML element for the property under a dummy XML document.
+            </summary>
         <remarks>To be added.</remarks>
+        <owner>rgoel</owner>
       </Docs>
     </Member>
     <Member MemberName="Clone">
@@ -78,6 +91,7 @@
         <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>3.5.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
+        <AssemblyVersion>15.1.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>Microsoft.Build.BuildEngine.BuildProperty</ReturnType>
@@ -86,10 +100,18 @@
         <Parameter Name="deepClone" Type="System.Boolean" />
       </Parameters>
       <Docs>
-        <param name="deepClone">
-          <see langword="true" /> to create a deep copy of the <see cref="T:Microsoft.Build.BuildEngine.BuildProperty" />; otherwise, <see langword="false" />.</param>
-        <summary>Creates a deep or shallow copy of the <see cref="T:Microsoft.Build.BuildEngine.BuildProperty" />.</summary>
-        <returns>A copy of the <see cref="T:Microsoft.Build.BuildEngine.BuildProperty" />.</returns>
+        <param name="deepClone" />
+        <summary>
+            Creates a shallow or deep clone of this BuildProperty object.
+            
+            A shallow clone points at the same XML element as the original, so 
+            that modifications to the name or value will be reflected in both 
+            copies.  However, the two copies could have different a finalValue.
+            
+            A deep clone actually clones the XML element as well, so that the
+            two copies are completely independent of each other.
+            </summary>
+        <returns />
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
@@ -100,6 +122,7 @@
   
  ]]></format>
         </remarks>
+        <owner>rgoel</owner>
       </Docs>
     </Member>
     <Member MemberName="Condition">
@@ -115,14 +138,18 @@
         <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>3.5.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
+        <AssemblyVersion>15.1.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.String</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>Gets or sets the <c>Condition</c> attribute value of the property.</summary>
+        <summary>
+            Accessor for the condition on the property.
+            </summary>
         <value>The <c>Condition</c> attribute value of the property.</value>
         <remarks>To be added.</remarks>
+        <owner>RGoel</owner>
       </Docs>
     </Member>
     <Member MemberName="FinalValue">
@@ -138,14 +165,18 @@
         <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>3.5.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
+        <AssemblyVersion>15.1.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.String</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>Gets the final value of the property after all property evaluations have been performed.</summary>
+        <summary>
+            Returns the unescaped value of the property.
+            </summary>
         <value>The final value of the property after all property evaluations have been performed.</value>
         <remarks>To be added.</remarks>
+        <owner>RGoel</owner>
       </Docs>
     </Member>
     <Member MemberName="IsImported">
@@ -161,15 +192,19 @@
         <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>3.5.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
+        <AssemblyVersion>15.1.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>Gets or sets a value indicating whether the property was imported into the project.</summary>
+        <summary>
+            Did this property originate from an imported project file?
+            </summary>
         <value>
           <see langword="true" /> if the property was imported into the project; otherwise, <see langword="false" />.</value>
         <remarks>To be added.</remarks>
+        <owner>RGoel</owner>
       </Docs>
     </Member>
     <Member MemberName="Name">
@@ -185,12 +220,20 @@
         <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>3.5.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
+        <AssemblyVersion>15.1.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.String</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>Gets the property name.</summary>
+        <summary>
+            Accessor for the property name.  This is read-only, so one cannot
+            change the property name once it's set ... your only option is 
+            to create a new BuildProperty object.  The reason is that BuildProperty objects
+            are often stored in hash tables where the hash function is based 
+            on the property name.  Modifying the property name of an existing
+            BuildProperty object would make the hash table incorrect.
+            </summary>
         <value>The property name.</value>
         <remarks>
           <format type="text/markdown"><![CDATA[  
@@ -203,6 +246,7 @@
   
  ]]></format>
         </remarks>
+        <owner>RGoel</owner>
       </Docs>
     </Member>
     <Member MemberName="op_Explicit">
@@ -218,6 +262,7 @@
         <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>3.5.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
+        <AssemblyVersion>15.1.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.String</ReturnType>
@@ -226,12 +271,16 @@
         <Parameter Name="propertyToCast" Type="Microsoft.Build.BuildEngine.BuildProperty" />
       </Parameters>
       <Docs>
-        <param name="propertyToCast">The <see cref="T:Microsoft.Build.BuildEngine.BuildProperty" /> to convert to a string.</param>
-        <summary>Converts a <see cref="T:Microsoft.Build.BuildEngine.BuildProperty" /> to a <see langword="String" />.</summary>
-        <returns>A <see langword="String" />, whose contents are the same as the <see cref="P:Microsoft.Build.BuildEngine.BuildProperty.Value" /> property of the <paramref name="propertyToCast" /> parameter.</returns>
+        <param name="propertyToCast" />
+        <summary>
+            This allows an implicit typecast from a "BuildProperty" to a "string"
+            when trying to access the property's value.
+            </summary>
+        <returns />
         <remarks>
           <format type="text/markdown"><![CDATA[The equivalent method for this operator is <xref:Microsoft.Build.BuildEngine.BuildProperty.ToString?displayProperty=nameWithType>]]></format>
         </remarks>
+        <owner>rgoel</owner>
       </Docs>
     </Member>
     <Member MemberName="ToString">
@@ -247,6 +296,7 @@
         <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>3.5.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
+        <AssemblyVersion>15.1.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Attributes>
         <Attribute FrameworkAlternate="netframework-4.0">
@@ -258,9 +308,12 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>Returns the string that represents the property <see cref="P:Microsoft.Build.BuildEngine.BuildProperty.Value" />.</summary>
+        <summary>
+            Returns the property value.
+            </summary>
         <returns>The string that represents the property <see cref="P:Microsoft.Build.BuildEngine.BuildProperty.Value" />.</returns>
         <remarks>To be added.</remarks>
+        <owner>RGoel</owner>
       </Docs>
     </Member>
     <Member MemberName="Value">
@@ -276,12 +329,16 @@
         <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>3.5.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
+        <AssemblyVersion>15.1.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.String</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>Gets or sets the property value.</summary>
+        <summary>
+            Accessor for the property value.  Normal properties can be modified;
+            other property types cannot.
+            </summary>
         <value>The property value.</value>
         <remarks>
           <format type="text/markdown"><![CDATA[  
@@ -294,6 +351,7 @@
   
  ]]></format>
         </remarks>
+        <owner>RGoel</owner>
       </Docs>
     </Member>
   </Members>

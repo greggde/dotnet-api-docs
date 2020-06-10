@@ -9,6 +9,7 @@
     <AssemblyName>Microsoft.Build.Engine</AssemblyName>
     <AssemblyVersion>3.5.0.0</AssemblyVersion>
     <AssemblyVersion>4.0.0.0</AssemblyVersion>
+    <AssemblyVersion>15.1.0.0</AssemblyVersion>
   </AssemblyInfo>
   <Base>
     <BaseTypeName>System.Exception</BaseTypeName>
@@ -20,7 +21,9 @@
     </Attribute>
   </Attributes>
   <Docs>
-    <summary>Wraps exceptions that occur on a different node.</summary>
+    <summary>
+            This class is used to wrap exceptions that occur on a different node
+            </summary>
     <remarks>To be added.</remarks>
   </Docs>
   <Members>
@@ -36,6 +39,7 @@
         <AssemblyName>Microsoft.Build.Engine</AssemblyName>
         <AssemblyVersion>3.5.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
+        <AssemblyVersion>15.1.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -45,9 +49,12 @@
         <Parameter Name="context" Type="System.Runtime.Serialization.StreamingContext" />
       </Parameters>
       <Docs>
-        <param name="info">A <see cref="T:System.Runtime.Serialization.SerializationInfo" /> object representing information about the remote error exception.</param>
-        <param name="context">A <see cref="T:System.Runtime.Serialization.StreamingContext" /> object representing the context in which the remote error exception occurred.</param>
-        <summary>ISerializable method which must be overridden since Exception implements this interface.</summary>
+        <param name="info" />
+        <param name="context" />
+        <summary>
+            ISerializable method which we must override since Exception implements this interface
+            If we ever add new members to this class, we'll need to update this.
+            </summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>

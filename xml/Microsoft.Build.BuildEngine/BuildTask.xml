@@ -10,14 +10,18 @@
     <AssemblyVersion>2.0.0.0</AssemblyVersion>
     <AssemblyVersion>3.5.0.0</AssemblyVersion>
     <AssemblyVersion>4.0.0.0</AssemblyVersion>
+    <AssemblyVersion>15.1.0.0</AssemblyVersion>
   </AssemblyInfo>
   <Base>
     <BaseTypeName>System.Object</BaseTypeName>
   </Base>
   <Interfaces />
   <Docs>
-    <summary>Represents a <see href="/visualstudio/msbuild/task-element-msbuild">Task</see> element in a project.</summary>
+    <summary>
+            This class represents a single task.
+            </summary>
     <remarks>To be added.</remarks>
+    <owner>rgoel</owner>
   </Docs>
   <Members>
     <Member MemberName="AddOutputItem">
@@ -33,6 +37,7 @@
         <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>3.5.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
+        <AssemblyVersion>15.1.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Attributes>
         <Attribute FrameworkAlternate="netframework-4.0">
@@ -47,10 +52,13 @@
         <Parameter Name="itemName" Type="System.String" />
       </Parameters>
       <Docs>
-        <param name="taskParameter">The value of the <see langword="TaskParameter" /> attribute of the <see langword="Output" /> element.</param>
-        <param name="itemName">The value of the <see langword="ItemName" /> attribute of the <see langword="Output" /> element.</param>
-        <summary>Adds an <see href="/visualstudio/msbuild/output-element-msbuild">Output</see> element with the specified <c>TaskParameter</c> and <c>ItemName</c> attributes to the <see href="/visualstudio/msbuild/task-element-msbuild">Task</see> element.</summary>
+        <param name="taskParameter" />
+        <param name="itemName" />
+        <summary>
+            Adds an Output tag to this task element
+            </summary>
         <remarks>To be added.</remarks>
+        <owner>LukaszG</owner>
       </Docs>
     </Member>
     <Member MemberName="AddOutputProperty">
@@ -66,6 +74,7 @@
         <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>3.5.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
+        <AssemblyVersion>15.1.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -75,10 +84,13 @@
         <Parameter Name="propertyName" Type="System.String" />
       </Parameters>
       <Docs>
-        <param name="taskParameter">The value of the <see langword="TaskParameter" /> attribute of the <see langword="Output" /> element.</param>
-        <param name="propertyName">The value of the <see langword="PropertyName" /> attribute of the <see langword="Output" /> element.</param>
-        <summary>Adds an <see href="/visualstudio/msbuild/output-element-msbuild">Output</see> element with the specified <c>TaskParameter</c> and <c>PropertyName</c> attributes to the <see href="/visualstudio/msbuild/task-element-msbuild">Task</see> element.</summary>
+        <param name="taskParameter" />
+        <param name="propertyName" />
+        <summary>
+            Adds an Output tag to this task element
+            </summary>
         <remarks>To be added.</remarks>
+        <owner>LukaszG</owner>
       </Docs>
     </Member>
     <Member MemberName="Condition">
@@ -94,14 +106,18 @@
         <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>3.5.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
+        <AssemblyVersion>15.1.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.String</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>Gets or sets the <c>Condition</c> attribute value of the <see href="/visualstudio/msbuild/task-element-msbuild">Task</see> element.</summary>
+        <summary>
+            Accessor for the task's "condition".
+            </summary>
         <value>The <c>Condition</c> attribute value of the <c>Task</c> element.</value>
         <remarks>To be added.</remarks>
+        <owner>RGoel</owner>
       </Docs>
     </Member>
     <Member MemberName="ContinueOnError">
@@ -117,14 +133,18 @@
         <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>3.5.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
+        <AssemblyVersion>15.1.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>Gets or sets the <c>ContinueOnError</c> attribute value of the <see href="/visualstudio/msbuild/task-element-msbuild">Task</see> element.</summary>
+        <summary>
+            Accessor for the task's "ContinueOnError".
+            </summary>
         <value>The <c>ContinueOnError</c> attribute value of the <c>Task</c> element.</value>
         <remarks>To be added.</remarks>
+        <owner>RGoel</owner>
       </Docs>
     </Member>
     <Member MemberName="Execute">
@@ -140,16 +160,20 @@
         <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>3.5.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
+        <AssemblyVersion>15.1.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>Runs the task represented by this <see cref="T:Microsoft.Build.BuildEngine.BuildTask" /> object.</summary>
+        <summary>
+            Runs the task associated with this object.
+            </summary>
         <returns>
           <see langword="true" /> if the method was successful; otherwise, <see langword="false" />.</returns>
         <remarks>To be added.</remarks>
+        <owner>RGoel</owner>
       </Docs>
     </Member>
     <Member MemberName="GetParameterNames">
@@ -165,14 +189,24 @@
         <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>3.5.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
+        <AssemblyVersion>15.1.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.String[]</ReturnType>
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>Gets an array containing the parameter names passed to the task.</summary>
-        <returns>An array containing the parameter names passed to the task.</returns>
+        <summary>
+            This retrieves the list of all parameter names from the element 
+            node of this task. Note that it excludes anything that a specific 
+            property is exposed for or that isn't valid here (Name, Condition, 
+            ContinueOnError).
+            
+            Note that if there are none, it returns string[0], rather than null, 
+            as it makes writing foreach statements over the return value so
+            much simpler.
+            </summary>
+        <returns />
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
@@ -183,6 +217,7 @@
   
  ]]></format>
         </remarks>
+        <owner>rgoel</owner>
       </Docs>
     </Member>
     <Member MemberName="GetParameterValue">
@@ -198,6 +233,7 @@
         <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>3.5.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
+        <AssemblyVersion>15.1.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.String</ReturnType>
@@ -207,9 +243,15 @@
       </Parameters>
       <Docs>
         <param name="attributeName">The parameter name.</param>
-        <summary>Gets the value of the specified task parameter.</summary>
+        <summary>
+            This retrieves an arbitrary attribute from the task element.  These
+            are attributes that the project author has placed on the task element
+            that have no meaning to MSBuild other than that they get passed to the
+            task itself as arguments.  
+            </summary>
         <returns>The value of the specified task parameter.</returns>
         <remarks>To be added.</remarks>
+        <owner>RGoel</owner>
       </Docs>
     </Member>
     <Member MemberName="HostObject">
@@ -225,6 +267,7 @@
         <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>3.5.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
+        <AssemblyVersion>15.1.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Attributes>
         <Attribute FrameworkAlternate="netframework-4.0">
@@ -238,9 +281,12 @@
         <ReturnType>Microsoft.Build.Framework.ITaskHost</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>Gets or sets the host object associated with the task.</summary>
+        <summary>
+            Accessor for the "host object" for this task.
+            </summary>
         <value>The host object associated with the task.</value>
         <remarks>To be added.</remarks>
+        <owner>RGoel</owner>
       </Docs>
     </Member>
     <Member MemberName="Name">
@@ -256,6 +302,7 @@
         <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>3.5.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
+        <AssemblyVersion>15.1.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Attributes>
         <Attribute FrameworkAlternate="netframework-4.0">
@@ -266,9 +313,12 @@
         <ReturnType>System.String</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>Gets the task name.</summary>
+        <summary>
+            Accessor for the task's "name" element.  
+            </summary>
         <value>The task name.</value>
         <remarks>To be added.</remarks>
+        <owner>RGoel</owner>
       </Docs>
     </Member>
     <MemberGroup MemberName="SetParameterValue">
@@ -293,6 +343,7 @@
         <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>3.5.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
+        <AssemblyVersion>15.1.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -304,8 +355,13 @@
       <Docs>
         <param name="parameterName">The parameter name to set.</param>
         <param name="parameterValue">The value to assign to <paramref name="parameterName" />.</param>
-        <summary>Sets the value of the specified task parameter.</summary>
+        <summary>
+            This sets an arbitrary attribute on the task element.  These
+            are attributes that the project author has placed on the task element
+            that get passed in to the task.
+            </summary>
         <remarks>To be added.</remarks>
+        <owner>RGoel</owner>
       </Docs>
     </Member>
     <Member MemberName="SetParameterValue">
@@ -321,6 +377,7 @@
         <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>3.5.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
+        <AssemblyVersion>15.1.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -331,12 +388,18 @@
         <Parameter Name="treatParameterValueAsLiteral" Type="System.Boolean" />
       </Parameters>
       <Docs>
-        <param name="parameterName">The parameter name to set.</param>
-        <param name="parameterValue">The value to assign to <paramref name="parameterName" />.</param>
-        <param name="treatParameterValueAsLiteral">
-          <see langword="true" /> to treat <paramref name="parameterValue" /> as a literal value; otherwise, <see langword="false" />.</param>
-        <summary>Sets the value of the specified task parameter.</summary>
+        <param name="parameterName" />
+        <param name="parameterValue" />
+        <param name="treatParameterValueAsLiteral" />
+        <summary>
+            This sets an arbitrary attribute on the task element.  These
+            are attributes that the project author has placed on the task element
+            that get passed in to the task.
+            
+            This optionally escapes the parameter value so it will be treated as a literal.
+            </summary>
         <remarks>To be added.</remarks>
+        <owner>RGoel</owner>
       </Docs>
     </Member>
     <Member MemberName="Type">
@@ -352,14 +415,19 @@
         <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>3.5.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
+        <AssemblyVersion>15.1.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Type</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>Gets the <see cref="T:System.Type" /> of the class that implements the task.</summary>
+        <summary>
+            System.Type object corresponding to the task class that implements 
+            the functionality that runs this task object.
+            </summary>
         <value>The <see cref="T:System.Type" /> of the class that implements the task.</value>
         <remarks>To be added.</remarks>
+        <owner>RGoel</owner>
       </Docs>
     </Member>
   </Members>

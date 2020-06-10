@@ -9,13 +9,18 @@
     <AssemblyName>Microsoft.Build.Engine</AssemblyName>
     <AssemblyVersion>3.5.0.0</AssemblyVersion>
     <AssemblyVersion>4.0.0.0</AssemblyVersion>
+    <AssemblyVersion>15.1.0.0</AssemblyVersion>
   </AssemblyInfo>
   <Base>
     <BaseTypeName>System.Object</BaseTypeName>
   </Base>
   <Interfaces />
   <Docs>
-    <summary>Contains information about a logger as a collection of values that can be used to instantiate the logger as well as being serialized to pass between different processes.</summary>
+    <summary>
+            This class is used to contain information about a logger as a collection of values that
+            can be used to instantiate the logger and can be serialized to be passed between different
+            processes.
+            </summary>
     <remarks>To be added.</remarks>
   </Docs>
   <Members>
@@ -31,6 +36,7 @@
         <AssemblyName>Microsoft.Build.Engine</AssemblyName>
         <AssemblyVersion>3.5.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
+        <AssemblyVersion>15.1.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Parameters>
         <Parameter Name="loggerClassName" Type="System.String" />
@@ -47,7 +53,9 @@
         <param name="verbosity">The verbosity switch for the logger.  
   
  **Note** On the command line, all loggers get the same verbosity level.</param>
-        <summary>Creates a logger description based on the given parameters.</summary>
+        <summary>
+            Creates a logger description from given data
+            </summary>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
@@ -70,6 +78,7 @@
         <AssemblyName>Microsoft.Build.Engine</AssemblyName>
         <AssemblyVersion>3.5.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
+        <AssemblyVersion>15.1.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Attributes>
         <Attribute FrameworkAlternate="netframework-4.0">
@@ -80,7 +89,9 @@
         <ReturnType>System.String</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>Gets the string of logger parameters.</summary>
+        <summary>
+            Returns the string of logger parameters, null if there are none
+            </summary>
         <value>A string list of the log parameters, or <see langword="null" /> if there are none.</value>
         <remarks>To be added.</remarks>
       </Docs>
@@ -97,6 +108,7 @@
         <AssemblyName>Microsoft.Build.Engine</AssemblyName>
         <AssemblyVersion>3.5.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
+        <AssemblyVersion>15.1.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Attributes>
         <Attribute FrameworkAlternate="netframework-4.0">
@@ -107,7 +119,9 @@
         <ReturnType>Microsoft.Build.Framework.LoggerVerbosity</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>Gets the verbosity level for the logger.</summary>
+        <summary>
+            Return the verbosity for this logger (from command line all loggers get same verbosity)
+            </summary>
         <value>A string value representing the logger's verbosity level.</value>
         <remarks>To be added.</remarks>
       </Docs>

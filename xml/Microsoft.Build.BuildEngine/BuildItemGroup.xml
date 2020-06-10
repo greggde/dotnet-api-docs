@@ -10,6 +10,7 @@
     <AssemblyVersion>2.0.0.0</AssemblyVersion>
     <AssemblyVersion>3.5.0.0</AssemblyVersion>
     <AssemblyVersion>4.0.0.0</AssemblyVersion>
+    <AssemblyVersion>15.1.0.0</AssemblyVersion>
   </AssemblyInfo>
   <Base>
     <BaseTypeName>System.Object</BaseTypeName>
@@ -25,7 +26,11 @@
     </Attribute>
   </Attributes>
   <Docs>
-    <summary>Represents a collection of <see cref="T:Microsoft.Build.BuildEngine.BuildItem" /> objects.</summary>
+    <summary>
+            This class represents a collection of items.  It may be represented
+            physically by an &lt;ItemGroup&gt; element persisted in the project file, 
+            or it may just be a virtual BuildItemGroup (e.g., the evaluated items).
+            </summary>
     <remarks>
       <format type="text/markdown"><![CDATA[  
   
@@ -56,10 +61,13 @@
         <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>3.5.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
+        <AssemblyVersion>15.1.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Parameters />
       <Docs>
-        <summary>Initializes a new instance of the <see cref="T:Microsoft.Build.BuildEngine.BuildItemGroup" /> class.</summary>
+        <summary>
+            Default constructor, which initializes a virtual (non-persisted) BuildItemGroup.
+            </summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -96,6 +104,7 @@
         <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>3.5.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
+        <AssemblyVersion>15.1.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>Microsoft.Build.BuildEngine.BuildItem</ReturnType>
@@ -107,7 +116,11 @@
       <Docs>
         <param name="itemName">The <see cref="P:Microsoft.Build.BuildEngine.BuildItem.Name" /> property value to assign the new <see cref="T:Microsoft.Build.BuildEngine.BuildItem" />.</param>
         <param name="itemInclude">The <see cref="P:Microsoft.Build.BuildEngine.BuildItem.Include" /> property value to assign the new <see cref="T:Microsoft.Build.BuildEngine.BuildItem" />.</param>
-        <summary>Adds a new <see cref="T:Microsoft.Build.BuildEngine.BuildItem" /> with the specified <see cref="P:Microsoft.Build.BuildEngine.BuildItem.Name" /> and <see cref="P:Microsoft.Build.BuildEngine.BuildItem.Include" /> property values to the <see cref="T:Microsoft.Build.BuildEngine.BuildItemGroup" />.</summary>
+        <summary>
+            Creates a new BuildItem defined by the given "Type" and "Include", and 
+            adds it to the end of this BuildItemGroup.
+            If the group is persisted, the item is persisted; otherwise it is virtual
+            </summary>
         <returns>The new <see cref="T:Microsoft.Build.BuildEngine.BuildItem" />.</returns>
         <remarks>
           <format type="text/markdown"><![CDATA[  
@@ -135,6 +148,7 @@
         <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>3.5.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
+        <AssemblyVersion>15.1.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>Microsoft.Build.BuildEngine.BuildItem</ReturnType>
@@ -149,7 +163,10 @@
         <param name="itemInclude">The <see cref="P:Microsoft.Build.BuildEngine.BuildItem.Include" /> property value to assign the new <see cref="T:Microsoft.Build.BuildEngine.BuildItem" />.</param>
         <param name="treatItemIncludeAsLiteral">
           <see langword="true" /> to treat the <paramref name="itemInclude" /> parameter as a literal value; otherwise, <see langword="false" />.</param>
-        <summary>Adds a new <see cref="T:Microsoft.Build.BuildEngine.BuildItem" /> with the specified <see cref="P:Microsoft.Build.BuildEngine.BuildItem.Name" /> and <see cref="P:Microsoft.Build.BuildEngine.BuildItem.Include" /> property values to the <see cref="T:Microsoft.Build.BuildEngine.BuildItemGroup" />, allowing you to specify whether the <see cref="P:Microsoft.Build.BuildEngine.BuildItem.Include" /> property value is treated as a literal.</summary>
+        <summary>
+            Adds a new item to the ItemGroup, optional treating the item Include as literal so that
+            any special characters will be escaped before persisting it.
+            </summary>
         <returns>The new <see cref="T:Microsoft.Build.BuildEngine.BuildItem" />.</returns>
         <remarks>To be added.</remarks>
       </Docs>
@@ -167,13 +184,17 @@
         <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>3.5.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
+        <AssemblyVersion>15.1.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>Removes the <see cref="P:Microsoft.Build.BuildEngine.BuildItemGroup.Condition" /> property value and all <see cref="T:Microsoft.Build.BuildEngine.BuildItem" /> objects from the <see cref="T:Microsoft.Build.BuildEngine.BuildItemGroup" />.</summary>
+        <summary>
+            Removes all Items from this BuildItemGroup, and also deletes the Condition
+            and Name.
+            </summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -190,6 +211,7 @@
         <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>3.5.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
+        <AssemblyVersion>15.1.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>Microsoft.Build.BuildEngine.BuildItemGroup</ReturnType>
@@ -200,7 +222,13 @@
       <Docs>
         <param name="deepClone">
           <see langword="true" /> to create a deep copy of the <see cref="T:Microsoft.Build.BuildEngine.BuildItemGroup" />; otherwise, <see langword="false" />.</param>
-        <summary>Creates a deep or shallow copy of the <see cref="T:Microsoft.Build.BuildEngine.BuildItemGroup" />.</summary>
+        <summary>
+            Clones the BuildItemGroup.  A shallow clone here is one that references
+            the same BuildItem objects as the original, whereas a deep clone actually
+            clones the BuildItem objects as well.  If this is a persisted BuildItemGroup, 
+            only deep clones are allowed, because you can't have the same XML 
+            element belonging to two parents.
+            </summary>
         <returns>A copy of the <see cref="T:Microsoft.Build.BuildEngine.BuildItemGroup" />.</returns>
         <remarks>
           <format type="text/markdown"><![CDATA[  
@@ -229,12 +257,15 @@
         <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>3.5.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
+        <AssemblyVersion>15.1.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.String</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>Gets or sets the <c>Condition</c> attribute value of the item group.</summary>
+        <summary>
+            Accessor for the condition on the item group.
+            </summary>
         <value>The <c>Condition</c> attribute value of the item group.</value>
         <remarks>To be added.</remarks>
       </Docs>
@@ -252,12 +283,15 @@
         <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>3.5.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
+        <AssemblyVersion>15.1.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Int32</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>Gets a value indicating the number of <see cref="T:Microsoft.Build.BuildEngine.BuildItem" /> objects in the <see cref="T:Microsoft.Build.BuildEngine.BuildItemGroup" />.</summary>
+        <summary>
+            Number of items in this group.
+            </summary>
         <value>An integer value representing the number of <see cref="T:Microsoft.Build.BuildEngine.BuildItem" /> objects in the <see cref="T:Microsoft.Build.BuildEngine.BuildItemGroup" />.</value>
         <remarks>To be added.</remarks>
       </Docs>
@@ -278,13 +312,18 @@
         <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>3.5.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
+        <AssemblyVersion>15.1.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Collections.IEnumerator</ReturnType>
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>Gets an enumerator that iterates through the <see cref="T:Microsoft.Build.BuildEngine.BuildItemGroup" />.</summary>
+        <summary>
+            This IEnumerable method returns an IEnumerator object, which allows
+            the caller to enumerate through the BuildItem objects contained in
+            this BuildItemGroup.
+            </summary>
         <returns>An <see cref="T:System.Collections.IEnumerator" /> for the entire <see cref="T:Microsoft.Build.BuildEngine.BuildItemGroup" />.</returns>
         <remarks>
           <format type="text/markdown"><![CDATA[  
@@ -317,6 +356,7 @@
         <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>3.5.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
+        <AssemblyVersion>15.1.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Attributes>
         <Attribute FrameworkAlternate="netframework-4.0">
@@ -327,7 +367,12 @@
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>Gets or sets a value indicating whether the item group was imported into the project.</summary>
+        <summary>
+            This returns a boolean telling you whether this particular item
+            group was imported from another project, or whether it was defined
+            in the main project.  For virtual item groups which have no
+            persistence, this is false.
+            </summary>
         <value>
           <see langword="true" /> if the item group was imported into the project; otherwise, <see langword="false" />.</value>
         <remarks>To be added.</remarks>
@@ -346,6 +391,7 @@
         <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>3.5.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
+        <AssemblyVersion>15.1.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>Microsoft.Build.BuildEngine.BuildItem</ReturnType>
@@ -355,7 +401,9 @@
       </Parameters>
       <Docs>
         <param name="index">The zero-based index of the <see cref="T:Microsoft.Build.BuildEngine.BuildItem" /> object to get or set.</param>
-        <summary>Gets or sets a <see cref="T:Microsoft.Build.BuildEngine.BuildItem" /> object in this <see cref="T:Microsoft.Build.BuildEngine.BuildItemGroup" />.</summary>
+        <summary>
+            Gets the item at the specified index.
+            </summary>
         <value>A <see cref="T:Microsoft.Build.BuildEngine.BuildItem" /> object in this <see cref="T:Microsoft.Build.BuildEngine.BuildItemGroup" />.</value>
         <remarks>To be added.</remarks>
       </Docs>
@@ -373,6 +421,7 @@
         <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>3.5.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
+        <AssemblyVersion>15.1.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -382,7 +431,10 @@
       </Parameters>
       <Docs>
         <param name="itemToRemove">The <see cref="T:Microsoft.Build.BuildEngine.BuildItem" /> to remove.</param>
-        <summary>Removes the specified <see cref="T:Microsoft.Build.BuildEngine.BuildItem" /> from the <see cref="T:Microsoft.Build.BuildEngine.BuildItemGroup" />.</summary>
+        <summary>
+            Removes the given BuildItem from this BuildItemGroup.
+            If item is not in this group, does nothing.
+            </summary>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
@@ -409,6 +461,7 @@
         <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>3.5.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
+        <AssemblyVersion>15.1.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -418,8 +471,11 @@
       </Parameters>
       <Docs>
         <param name="index">The zero-based index of the <see cref="T:Microsoft.Build.BuildEngine.BuildItem" /> object to remove.</param>
-        <summary>Removes the <see cref="T:Microsoft.Build.BuildEngine.BuildItem" /> at the specified index from the <see cref="T:Microsoft.Build.BuildEngine.BuildItemGroup" />.</summary>
+        <summary>
+            Removes the item at the specified index.
+            </summary>
         <remarks>To be added.</remarks>
+        <exception cref="T:System.ArgumentOutOfRangeException">If index is out of bounds</exception>
       </Docs>
     </Member>
     <Member MemberName="ToArray">
@@ -435,13 +491,17 @@
         <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>3.5.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
+        <AssemblyVersion>15.1.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>Microsoft.Build.BuildEngine.BuildItem[]</ReturnType>
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>Copies the <see cref="T:Microsoft.Build.BuildEngine.BuildItem" /> objects in the <see cref="T:Microsoft.Build.BuildEngine.BuildItemGroup" /> to a new array.</summary>
+        <summary>
+            Copies the items in this group into a new array.
+            NOTE: the copies are NOT clones i.e. only the references are copied
+            </summary>
         <returns>A new array containing the <see cref="T:Microsoft.Build.BuildEngine.BuildItem" /> objects copied from the <see cref="T:Microsoft.Build.BuildEngine.BuildItemGroup" />.</returns>
         <remarks>To be added.</remarks>
       </Docs>

@@ -10,13 +10,14 @@
     <AssemblyVersion>2.0.0.0</AssemblyVersion>
     <AssemblyVersion>3.5.0.0</AssemblyVersion>
     <AssemblyVersion>4.0.0.0</AssemblyVersion>
+    <AssemblyVersion>15.1.0.0</AssemblyVersion>
   </AssemblyInfo>
   <Base>
     <BaseTypeName>System.Object</BaseTypeName>
   </Base>
   <Interfaces />
   <Attributes>
-    <Attribute FrameworkAlternate="netframework-3.5;netframework-4.0;netframework-4.5;netframework-4.5.1;netframework-4.5.2;netframework-4.6;netframework-4.6.1;netframework-4.6.2;netframework-4.7;netframework-4.7.1;netframework-4.7.2;netframework-4.8">
+    <Attribute FrameworkAlternate="netframework-3.5;netframework-4.0;netframework-4.5;netframework-4.5.1;netframework-4.5.2;netframework-4.6;netframework-4.6.1;netframework-4.6.2;netframework-4.7;netframework-4.7.1;netframework-4.7.2;netframework-4.8;msbuild-16">
       <AttributeName>System.Diagnostics.DebuggerDisplay("BuildItem (Name = { Name }, Include = { Include }, FinalItemSpec = { FinalItemSpec }, Condition = { Condition } )")</AttributeName>
     </Attribute>
     <Attribute FrameworkAlternate="netframework-2.0;netframework-3.0">
@@ -24,7 +25,12 @@
     </Attribute>
   </Attributes>
   <Docs>
-    <summary>Represents a single item in an MSBuild project.</summary>
+    <summary>
+            This class represents a single item of the project. An item is usually a file on disk, with a type associated with it, and
+            its own item-specific attributes. The list of items is initially specified via XML tags in the project file, although a
+            single item tag can represent multiple items through the use of standard wilcards * and ?. Also, tasks can add new items
+            of various types to the project's item list -- these items don't have any XML representation.
+            </summary>
     <remarks>
       <format type="text/markdown"><![CDATA[  
   
@@ -41,6 +47,7 @@
   
  ]]></format>
     </remarks>
+    <owner>RGoel</owner>
   </Docs>
   <Members>
     <MemberGroup MemberName=".ctor">
@@ -65,6 +72,7 @@
         <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>3.5.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
+        <AssemblyVersion>15.1.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Parameters>
         <Parameter Name="itemName" Type="System.String" />
@@ -73,7 +81,10 @@
       <Docs>
         <param name="itemName">The <see cref="P:Microsoft.Build.BuildEngine.BuildItem.Name" /> property of the <see cref="T:Microsoft.Build.BuildEngine.BuildItem" />.</param>
         <param name="taskItem">The <see cref="T:Microsoft.Build.Framework.ITaskItem" /> from which to create the <see cref="P:Microsoft.Build.BuildEngine.BuildItem.Include" /> property of the <see cref="T:Microsoft.Build.BuildEngine.BuildItem" />.</param>
-        <summary>Initializes a new instance of the <see cref="T:Microsoft.Build.BuildEngine.BuildItem" /> class based on an <see cref="T:Microsoft.Build.Framework.ITaskItem" /> object.</summary>
+        <summary>
+            This constructor creates a new virtual (non-persisted) item based
+            on a ITaskItem object that was emitted by a task.
+            </summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -90,6 +101,7 @@
         <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>3.5.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
+        <AssemblyVersion>15.1.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Attributes>
         <Attribute FrameworkAlternate="netframework-4.0">
@@ -103,7 +115,10 @@
       <Docs>
         <param name="itemName">The <see cref="P:Microsoft.Build.BuildEngine.BuildItem.Name" /> property of the <see cref="T:Microsoft.Build.BuildEngine.BuildItem" />.</param>
         <param name="itemInclude">The <see cref="P:Microsoft.Build.BuildEngine.BuildItem.Include" /> property of the <see cref="T:Microsoft.Build.BuildEngine.BuildItem" />.</param>
-        <summary>Initializes a new instance of the <see cref="T:Microsoft.Build.BuildEngine.BuildItem" /> class with the specified <see cref="P:Microsoft.Build.BuildEngine.BuildItem.Name" /> and <see cref="P:Microsoft.Build.BuildEngine.BuildItem.Include" /> property values.</summary>
+        <summary>
+            This constructor creates a new virtual (non-persisted) item with the
+            specified type and include.
+            </summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -120,15 +135,21 @@
         <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>3.5.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
+        <AssemblyVersion>15.1.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>Microsoft.Build.BuildEngine.BuildItem</ReturnType>
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>Creates a shallow copy of the <see cref="T:Microsoft.Build.BuildEngine.BuildItem" />.</summary>
-        <returns>A copy of the <see cref="T:Microsoft.Build.BuildEngine.BuildItem" />.</returns>
+        <summary>
+            This creates a shallow clone of the BuildItem.  If this is an xml-backed item,
+            then the clone references the same XML element as the original, meaning
+            that modifications to the clone will affect the original.
+            </summary>
+        <returns />
         <remarks>To be added.</remarks>
+        <owner>rgoel</owner>
       </Docs>
     </Member>
     <Member MemberName="Condition">
@@ -144,14 +165,18 @@
         <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>3.5.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
+        <AssemblyVersion>15.1.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.String</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>Gets or sets the <c>Condition</c> attribute value of the item.</summary>
+        <summary>
+            Accessor for the item's "condition".
+            </summary>
         <value>The <c>Condition</c> attribute value of the item.</value>
         <remarks>To be added.</remarks>
+        <owner>RGoel</owner>
       </Docs>
     </Member>
     <Member MemberName="CopyCustomMetadataTo">
@@ -167,6 +192,7 @@
         <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>3.5.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
+        <AssemblyVersion>15.1.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -175,8 +201,10 @@
         <Parameter Name="destinationItem" Type="Microsoft.Build.BuildEngine.BuildItem" />
       </Parameters>
       <Docs>
-        <param name="destinationItem">The <see cref="T:Microsoft.Build.BuildEngine.BuildItem" /> to which to copy the item metadata.</param>
-        <summary>Copies all item metadata on this <see cref="T:Microsoft.Build.BuildEngine.BuildItem" /> to the specified <see cref="T:Microsoft.Build.BuildEngine.BuildItem" />.</summary>
+        <param name="destinationItem">BuildItem to copy custom attributes to</param>
+        <summary>
+            Copies all custom attributes to given item.
+            </summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -192,6 +220,7 @@
         <AssemblyName>Microsoft.Build.Engine</AssemblyName>
         <AssemblyVersion>3.5.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
+        <AssemblyVersion>15.1.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Attributes>
         <Attribute FrameworkAlternate="netframework-4.0">
@@ -202,8 +231,10 @@
         <ReturnType>System.Int32</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>Gets the number of custom attributes that are set on this item.</summary>
-        <value>An integer indicating how many custom attributes are set on this item.</value>
+        <summary>
+            Gets the number of metadata set on the item.
+            </summary>
+        <value>Count of metadata.</value>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
@@ -212,6 +243,7 @@
   
  ]]></format>
         </remarks>
+        <owner>SumedhK</owner>
       </Docs>
     </Member>
     <Member MemberName="CustomMetadataNames">
@@ -226,6 +258,7 @@
         <AssemblyName>Microsoft.Build.Engine</AssemblyName>
         <AssemblyVersion>3.5.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
+        <AssemblyVersion>15.1.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Attributes>
         <Attribute FrameworkAlternate="netframework-4.0">
@@ -236,8 +269,10 @@
         <ReturnType>System.Collections.ICollection</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>Gets all user-defined or custom attribute names.</summary>
-        <value>An <see cref="T:System.Collections.ICollection" /> containing string names for all of the user-defined or custom attributes.</value>
+        <summary>
+            Gets the names of metadata on the item -- also includes the pre-defined/reserved item-spec modifiers.
+            </summary>
+        <value>Collection of name strings.</value>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
@@ -246,6 +281,7 @@
   
  ]]></format>
         </remarks>
+        <owner>SumedhK, JomoF</owner>
       </Docs>
     </Member>
     <Member MemberName="Exclude">
@@ -261,14 +297,18 @@
         <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>3.5.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
+        <AssemblyVersion>15.1.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.String</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>Gets or sets the <c>Exclude</c> attribute value of the item.</summary>
+        <summary>
+            Accessor for the item's "exclude" string.
+            </summary>
         <value>The <c>Exclude</c> attribute value of the item.</value>
         <remarks>To be added.</remarks>
+        <owner>RGoel</owner>
       </Docs>
     </Member>
     <Member MemberName="FinalItemSpec">
@@ -284,14 +324,18 @@
         <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>3.5.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
+        <AssemblyVersion>15.1.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.String</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>Gets the final specification of the item after all wildcards and properties have been evaluated.</summary>
+        <summary>
+            Returns the unescaped final value of the item.
+            </summary>
         <value>The final specification of the item after all wildcards and properties have been evaluated.</value>
         <remarks>To be added.</remarks>
+        <owner>RGoel</owner>
       </Docs>
     </Member>
     <Member MemberName="GetEvaluatedMetadata">
@@ -307,6 +351,7 @@
         <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>3.5.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
+        <AssemblyVersion>15.1.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.String</ReturnType>
@@ -315,10 +360,14 @@
         <Parameter Name="metadataName" Type="System.String" />
       </Parameters>
       <Docs>
-        <param name="metadataName">The item metadata name.</param>
-        <summary>Returns the value of the specified item metadata after all item and property references have been evaluated.</summary>
-        <returns>The value of the specified item metadata after all item and property references have been evaluated.</returns>
-        <remarks>To be added.</remarks>
+        <param name="metadataName">The name of the attribute to retrieve.</param>
+        <summary>
+            Retrieves an arbitrary metadata from the item element, expands any property and item references within it, and 
+            unescapes it.
+            </summary>
+        <returns>The evaluated value of the requested attribute.</returns>
+        <remarks>Custom attributes on virtual items are not evaluated.</remarks>
+        <exception cref="T:System.InvalidOperationException">Thrown when the requested attribute is not applicable to the item.</exception>
       </Docs>
     </Member>
     <Member MemberName="GetMetadata">
@@ -334,6 +383,7 @@
         <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>3.5.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
+        <AssemblyVersion>15.1.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.String</ReturnType>
@@ -342,9 +392,13 @@
         <Parameter Name="metadataName" Type="System.String" />
       </Parameters>
       <Docs>
-        <param name="metadataName">The item metadata name.</param>
-        <summary>Returns the value of the specified item metadata.</summary>
-        <returns>The value of the specified item metadata.</returns>
+        <param name="metadataName">The name of the metadata to retrieve.</param>
+        <summary>
+            Retrieves an arbitrary unevaluated metadata value from the item element. These are pieces of metadata that the project author has
+            placed on the item element that have no meaning to MSBuild. They are just arbitrary metadata that travel around with
+            the BuildItem wherever it goes.
+            </summary>
+        <returns>The value of the requested metadata.</returns>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
@@ -356,6 +410,7 @@
   
  ]]></format>
         </remarks>
+        <exception cref="T:System.InvalidOperationException">Thrown when the requested metadata is not applicable to the item.</exception>
       </Docs>
     </Member>
     <Member MemberName="HasMetadata">
@@ -371,6 +426,7 @@
         <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>3.5.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
+        <AssemblyVersion>15.1.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Boolean</ReturnType>
@@ -380,10 +436,12 @@
       </Parameters>
       <Docs>
         <param name="metadataName">The item metadata name.</param>
-        <summary>Indicates whether the item has the specified item metadata.</summary>
+        <summary>
+            Indicates if the given metadata is set on the item.
+            </summary>
         <returns>
           <see langword="true" /> if the item has the specified item metadata; otherwise, <see langword="false" />.</returns>
-        <remarks>To be added.</remarks>
+        <remarks>BuildItem-spec modifiers are treated as metadata.</remarks>
       </Docs>
     </Member>
     <Member MemberName="Include">
@@ -399,6 +457,7 @@
         <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>3.5.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
+        <AssemblyVersion>15.1.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.String</ReturnType>
@@ -432,6 +491,7 @@
         <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>3.5.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
+        <AssemblyVersion>15.1.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Attributes>
         <Attribute FrameworkAlternate="netframework-4.0">
@@ -442,7 +502,12 @@
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>Gets a value indicating whether the item was imported into the project.</summary>
+        <summary>
+            This returns a boolean telling you whether this particular item
+            was imported from another project, or whether it was defined
+            in the main project.  For virtual items which have no
+            persistence, this is false.
+            </summary>
         <value>
           <see langword="true" /> if the item was imported into the project; otherwise, <see langword="false" />.</value>
         <remarks>To be added.</remarks>
@@ -460,13 +525,16 @@
         <AssemblyName>Microsoft.Build.Engine</AssemblyName>
         <AssemblyVersion>3.5.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
+        <AssemblyVersion>15.1.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Int32</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>Gets the number of metadata set on the item.</summary>
-        <value>An integer representing the number of metadata items.</value>
+        <summary>
+            Gets the number of metadata set on the item.
+            </summary>
+        <value>Count of metadata.</value>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
@@ -475,6 +543,7 @@
   
  ]]></format>
         </remarks>
+        <owner>SumedhK</owner>
       </Docs>
     </Member>
     <Member MemberName="MetadataNames">
@@ -489,13 +558,16 @@
         <AssemblyName>Microsoft.Build.Engine</AssemblyName>
         <AssemblyVersion>3.5.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
+        <AssemblyVersion>15.1.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Collections.ICollection</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>Gets the names of metadata on the item, including pre-defined or reserved item-spec modifiers.</summary>
-        <value>An <see cref="T:System.Collections.ICollection" /> containing name strings of all metadata on the item.</value>
+        <summary>
+            Gets the names of metadata on the item -- also includes the pre-defined/reserved item-spec modifiers.
+            </summary>
+        <value>Collection of name strings.</value>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
@@ -504,6 +576,7 @@
   
  ]]></format>
         </remarks>
+        <owner>SumedhK, JomoF</owner>
       </Docs>
     </Member>
     <Member MemberName="Name">
@@ -519,12 +592,20 @@
         <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>3.5.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
+        <AssemblyVersion>15.1.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.String</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>Gets or sets the name of the item collection to which the item belongs.</summary>
+        <summary>
+            Accessor for the item's "type" string.  Note that changing the "Type"
+            of an BuildItem requires the whole project to be re-evalauted.  This is because
+            items are frequently stored in hash tables based on their item types,
+            so changing an item type would mess up the tables.  In the current
+            implementation the caller who changes the item type is responsible
+            for calling Project.MarkAsDirty().
+            </summary>
         <value>The name of the item collection to which the item belongs.</value>
         <remarks>
           <format type="text/markdown"><![CDATA[  
@@ -552,6 +633,7 @@
         <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>3.5.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
+        <AssemblyVersion>15.1.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -561,8 +643,10 @@
       </Parameters>
       <Docs>
         <param name="metadataName">The item metadata name.</param>
-        <summary>Removes the specified item metadata.</summary>
-        <remarks>To be added.</remarks>
+        <summary>
+            Removes the specified metadata on the item.
+            </summary>
+        <remarks>Removal of well-known metadata is not allowed.</remarks>
       </Docs>
     </Member>
     <MemberGroup MemberName="SetMetadata">
@@ -598,6 +682,7 @@
         <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>3.5.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
+        <AssemblyVersion>15.1.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -609,7 +694,11 @@
       <Docs>
         <param name="metadataName">The item metadata name.</param>
         <param name="metadataValue">The item metadata value.</param>
-        <summary>Assigns the specified value to the specified item metadata.</summary>
+        <summary>
+            Sets an arbitrary metadata on the item element. These are metadata that the project author has placed on the item
+            element that have no meaning to MSBuild. They are just arbitrary metadata that travel around with the BuildItem.
+            Does not backup metadata before making changes.
+            </summary>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
@@ -636,6 +725,7 @@
         <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>3.5.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
+        <AssemblyVersion>15.1.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -650,7 +740,11 @@
         <param name="metadataValue">The item metadata value.</param>
         <param name="treatMetadataValueAsLiteral">
           <see langword="true" /> to treat the metadata as a literal value by escaping all [!INCLUDE[vstecmsbuild](~/includes/vstecmsbuild-md.md)] special characters; otherwise, <see langword="false" />.</param>
-        <summary>Assigns the specified value to the specified item metadata, and optionally treats the metadata as a literal value.</summary>
+        <summary>
+            Sets custom metadata on this item, with the option of treating the metadata value
+            literally, meaning that special sharacters will be escaped.
+            Does not backup metadata before making changes.
+            </summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
