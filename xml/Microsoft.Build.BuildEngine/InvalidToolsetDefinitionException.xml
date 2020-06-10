@@ -9,6 +9,7 @@
     <AssemblyName>Microsoft.Build.Engine</AssemblyName>
     <AssemblyVersion>3.5.0.0</AssemblyVersion>
     <AssemblyVersion>4.0.0.0</AssemblyVersion>
+    <AssemblyVersion>15.1.0.0</AssemblyVersion>
   </AssemblyInfo>
   <Base>
     <BaseTypeName>System.Exception</BaseTypeName>
@@ -20,7 +21,9 @@
     </Attribute>
   </Attributes>
   <Docs>
-    <summary>This exception is thrown whenever there is a problem with the user's custom toolset definition file. The problem might be semantic or syntactical. If the problem is in the syntax, it can typically be caught by XSD validation.</summary>
+    <summary>
+            Exception subclass that ToolsetReaders should throw.
+            </summary>
     <remarks>To be added.</remarks>
   </Docs>
   <Members>
@@ -44,6 +47,7 @@
         <AssemblyName>Microsoft.Build.Engine</AssemblyName>
         <AssemblyVersion>3.5.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
+        <AssemblyVersion>15.1.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Attributes>
         <Attribute FrameworkAlternate="netframework-4.0">
@@ -52,7 +56,9 @@
       </Attributes>
       <Parameters />
       <Docs>
-        <summary>Initializes a new instance of the <see cref="T:Microsoft.Build.BuildEngine.InvalidToolsetDefinitionException" /> class.</summary>
+        <summary>
+            Basic constructor.
+            </summary>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
@@ -82,6 +88,7 @@
         <AssemblyName>Microsoft.Build.Engine</AssemblyName>
         <AssemblyVersion>3.5.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
+        <AssemblyVersion>15.1.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Attributes>
         <Attribute FrameworkAlternate="netframework-4.0">
@@ -92,8 +99,10 @@
         <Parameter Name="message" Type="System.String" />
       </Parameters>
       <Docs>
-        <param name="message">The error message that explains the reason for the exception.</param>
-        <summary>Initializes a new instance of the <see cref="T:Microsoft.Build.BuildEngine.InvalidToolsetDefinitionException" /> class.</summary>
+        <param name="message" />
+        <summary>
+            Basic constructor.
+            </summary>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
@@ -121,6 +130,7 @@
         <AssemblyName>Microsoft.Build.Engine</AssemblyName>
         <AssemblyVersion>3.5.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
+        <AssemblyVersion>15.1.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Parameters>
         <Parameter Name="info" Type="System.Runtime.Serialization.SerializationInfo" />
@@ -129,7 +139,9 @@
       <Docs>
         <param name="info">The <see cref="T:System.Runtime.Serialization.SerializationInfo" /> that holds the serialized object data about the exception being thrown.</param>
         <param name="context">The <see cref="T:System.Runtime.Serialization.StreamingContext" /> that contains contextual information about the source or destination.</param>
-        <summary>Initializes a new instance of the <see cref="T:Microsoft.Build.BuildEngine.InvalidToolsetDefinitionException" /> class.</summary>
+        <summary>
+            Basic constructor.
+            </summary>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
@@ -153,6 +165,7 @@
         <AssemblyName>Microsoft.Build.Engine</AssemblyName>
         <AssemblyVersion>3.5.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
+        <AssemblyVersion>15.1.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Attributes>
         <Attribute FrameworkAlternate="netframework-4.0">
@@ -164,9 +177,11 @@
         <Parameter Name="innerException" Type="System.Exception" />
       </Parameters>
       <Docs>
-        <param name="message">The error message that explains the reason for the exception.</param>
-        <param name="innerException">The error code. This parameter can be a null reference (<see langword="Nothing" />).</param>
-        <summary>Initializes a new instance of the <see cref="T:Microsoft.Build.BuildEngine.InvalidToolsetDefinitionException" /> class.</summary>
+        <param name="message" />
+        <param name="innerException" />
+        <summary>
+            Basic constructor.
+            </summary>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
@@ -197,6 +212,7 @@
         <AssemblyName>Microsoft.Build.Engine</AssemblyName>
         <AssemblyVersion>3.5.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
+        <AssemblyVersion>15.1.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Attributes>
         <Attribute FrameworkAlternate="netframework-4.0">
@@ -208,9 +224,11 @@
         <Parameter Name="errorCode" Type="System.String" />
       </Parameters>
       <Docs>
-        <param name="message">The error message that explains the reason for the exception.</param>
-        <param name="errorCode">The error code. This parameter can be a null reference (<see langword="Nothing" />).</param>
-        <summary>Initializes a new instance of the <see cref="T:Microsoft.Build.BuildEngine.InvalidToolsetDefinitionException" /> class.</summary>
+        <param name="message" />
+        <param name="errorCode" />
+        <summary>
+            Constructor that takes an MSBuild error code
+            </summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -226,6 +244,7 @@
         <AssemblyName>Microsoft.Build.Engine</AssemblyName>
         <AssemblyVersion>3.5.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
+        <AssemblyVersion>15.1.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Attributes>
         <Attribute FrameworkAlternate="netframework-4.0">
@@ -238,10 +257,12 @@
         <Parameter Name="innerException" Type="System.Exception" />
       </Parameters>
       <Docs>
-        <param name="message">The error message that explains the reason for the exception.</param>
-        <param name="errorCode">The error code. This parameter can be a null reference (<see langword="Nothing" />).</param>
-        <param name="innerException">The exception that is the cause of the current exception. If the <paramref name="innerException" /> parameter is not a null reference (<see langword="Nothing" /> in Visual Basic), the current exception is raised in a <see langword="catch" /> block that handles the inner exception.</param>
-        <summary>Initializes a new instance of the <see cref="T:Microsoft.Build.BuildEngine.InvalidToolsetDefinitionException" /> class.</summary>
+        <param name="message" />
+        <param name="errorCode" />
+        <param name="innerException" />
+        <summary>
+            Constructor that takes an MSBuild error code
+            </summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -257,6 +278,7 @@
         <AssemblyName>Microsoft.Build.Engine</AssemblyName>
         <AssemblyVersion>3.5.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
+        <AssemblyVersion>15.1.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Attributes>
         <Attribute FrameworkAlternate="netframework-4.0">
@@ -267,7 +289,10 @@
         <ReturnType>System.String</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>Gets the exception error code that was thrown.</summary>
+        <summary>
+            The MSBuild error code corresponding with this exception, or
+            null if none was specified.
+            </summary>
         <value>A string representing the error code.</value>
         <remarks>To be added.</remarks>
       </Docs>
@@ -284,6 +309,7 @@
         <AssemblyName>Microsoft.Build.Engine</AssemblyName>
         <AssemblyVersion>3.5.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
+        <AssemblyVersion>15.1.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -293,9 +319,12 @@
         <Parameter Name="context" Type="System.Runtime.Serialization.StreamingContext" />
       </Parameters>
       <Docs>
-        <param name="info">The <see cref="T:System.Runtime.Serialization.SerializationInfo" /> that holds the serialized object data about the exception being thrown.</param>
-        <param name="context">The <see cref="T:System.Runtime.Serialization.StreamingContext" /> that contains contextual information about the source or destination.</param>
-        <summary>Sets the <see cref="T:System.Runtime.Serialization.SerializationInfo" /> with information about the exception.</summary>
+        <param name="info" />
+        <param name="context" />
+        <summary>
+            ISerializable method which we must override since Exception implements this interface
+            If we ever add new members to this class, we'll need to update this.
+            </summary>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   

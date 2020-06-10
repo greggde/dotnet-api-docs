@@ -10,14 +10,18 @@
     <AssemblyVersion>2.0.0.0</AssemblyVersion>
     <AssemblyVersion>3.5.0.0</AssemblyVersion>
     <AssemblyVersion>4.0.0.0</AssemblyVersion>
+    <AssemblyVersion>15.1.0.0</AssemblyVersion>
   </AssemblyInfo>
   <Base>
     <BaseTypeName>System.Object</BaseTypeName>
   </Base>
   <Interfaces />
   <Docs>
-    <summary>Contains utility methods used by MSBuild. This class cannot be inherited.</summary>
+    <summary>
+            This class contains utility methods for the MSBuild engine.
+            </summary>
     <remarks>To be added.</remarks>
+    <owner>RGoel</owner>
   </Docs>
   <Members>
     <Member MemberName="Escape">
@@ -33,6 +37,7 @@
         <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>3.5.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
+        <AssemblyVersion>15.1.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.String</ReturnType>
@@ -41,9 +46,12 @@
         <Parameter Name="unescapedExpression" Type="System.String" />
       </Parameters>
       <Docs>
-        <param name="unescapedExpression">The string to convert.</param>
-        <summary>Converts the specified string into a syntax that allows the [!INCLUDE[vstecmsbuild](~/includes/vstecmsbuild-md.md)] engine to interpret the character literally.</summary>
-        <returns>The converted value of the specified string.</returns>
+        <param name="unescapedExpression">string to escape</param>
+        <summary>
+            Escapes given string, that is replaces special characters with escape sequences that allow MSBuild hosts
+            to treat MSBuild-interpreted characters literally (';' becomes "%3b" and so on).
+            </summary>
+        <returns>escaped string</returns>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   

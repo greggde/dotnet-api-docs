@@ -4,13 +4,14 @@
   <TypeSignature Language="DocId" Value="T:Microsoft.Build.BuildEngine.TargetCollection" />
   <TypeSignature Language="VB.NET" Value="Public Class TargetCollection&#xA;Implements ICollection" />
   <TypeSignature Language="C++ CLI" Value="public ref class TargetCollection : System::Collections::ICollection" />
+  <TypeSignature Language="F#" Value="type TargetCollection = class&#xA;    interface IEnumerable&#xA;    interface ICollection" FrameworkAlternate="msbuild-16;netframework-4.6;netframework-4.6.1;netframework-4.6.2;netframework-4.7;netframework-4.7.1;netframework-4.7.2;netframework-4.8" />
   <TypeSignature Language="F#" Value="type TargetCollection = class&#xA;    interface ICollection&#xA;    interface IEnumerable" FrameworkAlternate="netframework-2.0;netframework-3.0;netframework-3.5;netframework-4.0;netframework-4.5;netframework-4.5.1;netframework-4.5.2" />
-  <TypeSignature Language="F#" Value="type TargetCollection = class&#xA;    interface IEnumerable&#xA;    interface ICollection" FrameworkAlternate="netframework-4.6;netframework-4.6.1;netframework-4.6.2;netframework-4.7;netframework-4.7.1;netframework-4.7.2;netframework-4.8" />
   <AssemblyInfo>
     <AssemblyName>Microsoft.Build.Engine</AssemblyName>
     <AssemblyVersion>2.0.0.0</AssemblyVersion>
     <AssemblyVersion>3.5.0.0</AssemblyVersion>
     <AssemblyVersion>4.0.0.0</AssemblyVersion>
+    <AssemblyVersion>15.1.0.0</AssemblyVersion>
   </AssemblyInfo>
   <Base>
     <BaseTypeName>System.Object</BaseTypeName>
@@ -24,8 +25,13 @@
     </Interface>
   </Interfaces>
   <Docs>
-    <summary>Represents a collection of all <see href="/visualstudio/msbuild/target-element-msbuild">Target</see> elements in a project.</summary>
+    <summary>
+            This class represents a collection of persisted &lt;Target&gt;'s.  Each
+            MSBuild project has exactly one TargetCollection, which includes
+            all the imported Targets as well as the ones in the main project file.
+            </summary>
     <remarks>To be added.</remarks>
+    <owner>rgoel</owner>
   </Docs>
   <Members>
     <Member MemberName="AddNewTarget">
@@ -41,6 +47,7 @@
         <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>3.5.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
+        <AssemblyVersion>15.1.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>Microsoft.Build.BuildEngine.Target</ReturnType>
@@ -49,9 +56,11 @@
         <Parameter Name="targetName" Type="System.String" />
       </Parameters>
       <Docs>
-        <param name="targetName">The <see langword="Name" /> attribute of the new <see langword="Target" /> element.</param>
-        <summary>Adds a new <see href="/visualstudio/msbuild/target-element-msbuild">Target</see> element to the end of the project.</summary>
-        <returns>A <see cref="T:Microsoft.Build.BuildEngine.Target" /> object representing the created <c>Target</c> element.</returns>
+        <param name="targetName" />
+        <summary>
+            Adds a new &lt;Target&gt; element to the project file, at the very end.
+            </summary>
+        <returns>The new Target object.</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -71,6 +80,7 @@
         <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>3.5.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
+        <AssemblyVersion>15.1.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -82,8 +92,12 @@
       <Docs>
         <param name="array">The one-dimensional <see cref="T:System.Array" /> that is the destination of the elements copied from <see cref="T:Microsoft.Build.BuildEngine.TargetCollection" />. The <see cref="T:System.Array" /> must have zero-based indexing.</param>
         <param name="index">The zero-based index in <paramref name="array" /> at which copying begins.</param>
-        <summary>Copies the entire <see cref="T:Microsoft.Build.BuildEngine.TargetCollection" /> to a compatible one-dimensional <see cref="T:System.Array" />, starting at the specified index of the target array.</summary>
+        <summary>
+            This ICollection method copies the contents of this collection to an 
+            array.
+            </summary>
         <remarks>To be added.</remarks>
+        <owner>RGoel</owner>
       </Docs>
     </Member>
     <Member MemberName="Count">
@@ -102,12 +116,16 @@
         <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>3.5.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
+        <AssemblyVersion>15.1.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Int32</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>Gets a value indicating the number of <see cref="T:Microsoft.Build.BuildEngine.Target" /> objects in the <see cref="T:Microsoft.Build.BuildEngine.TargetCollection" />.</summary>
+        <summary>
+            Read-only property which returns the number of Targets contained
+            in our collection.
+            </summary>
         <value>An integer value representing the number of <see cref="T:Microsoft.Build.BuildEngine.Target" /> objects in the collection.</value>
         <remarks>
           <format type="text/markdown"><![CDATA[  
@@ -117,6 +135,7 @@
   
  ]]></format>
         </remarks>
+        <owner>RGoel</owner>
       </Docs>
     </Member>
     <Member MemberName="Exists">
@@ -132,6 +151,7 @@
         <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>3.5.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
+        <AssemblyVersion>15.1.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Boolean</ReturnType>
@@ -140,10 +160,11 @@
         <Parameter Name="targetName" Type="System.String" />
       </Parameters>
       <Docs>
-        <param name="targetName">The <see langword="Name" /> attribute of the Target element to search for.</param>
-        <summary>Determines whether the specified <see cref="T:Microsoft.Build.BuildEngine.Target" /> exists in the <see cref="T:Microsoft.Build.BuildEngine.TargetCollection" />.</summary>
-        <returns>
-          <see langword="true" /> if the <c>Target</c> element exists; otherwise, <see langword="false" />.</returns>
+        <param name="targetName">name of the target we're looking for</param>
+        <summary>
+            Checks if a target with given name already exists
+            </summary>
+        <returns>true if the target already exists</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -163,13 +184,18 @@
         <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>3.5.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
+        <AssemblyVersion>15.1.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Collections.IEnumerator</ReturnType>
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>Gets an enumerator that iterates through the <see cref="T:Microsoft.Build.BuildEngine.TargetCollection" />.</summary>
+        <summary>
+            This IEnumerable method returns an IEnumerator object, which allows
+            the caller to enumerate through the Target objects contained in
+            this TargetCollection.
+            </summary>
         <returns>An <see cref="T:System.Collections.IEnumerator" /> for the entire <see cref="T:Microsoft.Build.BuildEngine.TargetCollection" />.</returns>
         <remarks>
           <format type="text/markdown"><![CDATA[  
@@ -179,6 +205,7 @@
   
  ]]></format>
         </remarks>
+        <owner>RGoel</owner>
       </Docs>
     </Member>
     <Member MemberName="IsSynchronized">
@@ -197,15 +224,19 @@
         <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>3.5.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
+        <AssemblyVersion>15.1.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>Gets a value indicating whether access to the <see cref="T:Microsoft.Build.BuildEngine.TargetCollection" /> is synchronized (thread safe).</summary>
+        <summary>
+            This ICollection property tells whether this object is thread-safe.
+            </summary>
         <value>
           <see langword="true" /> if access to the <see cref="T:Microsoft.Build.BuildEngine.TargetCollection" /> is synchronized (thread safe); otherwise, <see langword="false" />. The default is <see langword="false" />.</value>
         <remarks>To be added.</remarks>
+        <owner>RGoel</owner>
       </Docs>
     </Member>
     <Member MemberName="Item">
@@ -221,6 +252,7 @@
         <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>3.5.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
+        <AssemblyVersion>15.1.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>Microsoft.Build.BuildEngine.Target</ReturnType>
@@ -229,9 +261,12 @@
         <Parameter Name="index" Type="System.String" />
       </Parameters>
       <Docs>
-        <param name="index">The <see langword="Name" /> attribute of the Target element in the collection.</param>
-        <summary>Gets the specified <see cref="T:Microsoft.Build.BuildEngine.Target" /> object in the <see cref="T:Microsoft.Build.BuildEngine.TargetCollection" />.</summary>
-        <value>The <see cref="T:Microsoft.Build.BuildEngine.Target" /> object that contains the <see cref="P:Microsoft.Build.BuildEngine.Target.Name" /> property value specified by <paramref name="index" />.</value>
+        <param name="index" />
+        <summary>
+            Gets the target with the given name, case-insensitively.
+            Note that this also defines the .BuildItem() accessor automagically.
+            </summary>
+        <value>The target with the given name.</value>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
@@ -240,6 +275,7 @@
   
  ]]></format>
         </remarks>
+        <owner>RGoel</owner>
       </Docs>
     </Member>
     <Member MemberName="RemoveTarget">
@@ -255,6 +291,7 @@
         <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>3.5.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
+        <AssemblyVersion>15.1.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -263,9 +300,13 @@
         <Parameter Name="targetToRemove" Type="Microsoft.Build.BuildEngine.Target" />
       </Parameters>
       <Docs>
-        <param name="targetToRemove">The <see langword="Name" /> attribute of the <see langword="Target" /> element to remove.</param>
-        <summary>Removes the specified <see href="/visualstudio/msbuild/target-element-msbuild">Target</see> element from the project.</summary>
+        <param name="targetToRemove" />
+        <summary>
+            Removes a target from the project, and removes the corresponding &lt;Target&gt; element
+            from the project's XML.
+            </summary>
         <remarks>To be added.</remarks>
+        <owner>RGoel</owner>
       </Docs>
     </Member>
     <Member MemberName="SyncRoot">
@@ -284,14 +325,19 @@
         <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>3.5.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
+        <AssemblyVersion>15.1.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Object</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>Gets an object that can be used to synchronize access to the <see cref="T:Microsoft.Build.BuildEngine.TargetCollection" />.</summary>
+        <summary>
+            This ICollection property returns the object to be used to synchronize
+            access to the class.
+            </summary>
         <value>An object that can be used to synchronize access to the <see cref="T:Microsoft.Build.BuildEngine.TargetCollection" />.</value>
         <remarks>To be added.</remarks>
+        <owner>RGoel</owner>
       </Docs>
     </Member>
   </Members>

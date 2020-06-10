@@ -10,14 +10,18 @@
     <AssemblyVersion>2.0.0.0</AssemblyVersion>
     <AssemblyVersion>3.5.0.0</AssemblyVersion>
     <AssemblyVersion>4.0.0.0</AssemblyVersion>
+    <AssemblyVersion>15.1.0.0</AssemblyVersion>
   </AssemblyInfo>
   <Base>
     <BaseTypeName>System.Object</BaseTypeName>
   </Base>
   <Interfaces />
   <Docs>
-    <summary>Represents a single <see href="/visualstudio/msbuild/usingtask-element-msbuild">UsingTask</see> element in an MSBuild project.</summary>
+    <summary>
+            This class represents a single UsingTask element in a project file
+            </summary>
     <remarks>To be added.</remarks>
+    <owner>LukaszG</owner>
   </Docs>
   <Members>
     <Member MemberName="AssemblyFile">
@@ -33,14 +37,18 @@
         <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>3.5.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
+        <AssemblyVersion>15.1.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.String</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>Gets the <c>AssemblyFile</c> attribute value of the <see href="/visualstudio/msbuild/usingtask-element-msbuild">UsingTask</see> element.</summary>
+        <summary>
+            The assembly file containing the task
+            </summary>
         <value>The <c>AssemblyFile</c> attribute value of the <c>UsingTask</c> element.</value>
         <remarks>To be added.</remarks>
+        <owner>LukaszG</owner>
       </Docs>
     </Member>
     <Member MemberName="AssemblyName">
@@ -56,14 +64,18 @@
         <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>3.5.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
+        <AssemblyVersion>15.1.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.String</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>Gets the <c>AssemblyName</c> attribute value of the <see href="/visualstudio/msbuild/usingtask-element-msbuild">UsingTask</see> element.</summary>
+        <summary>
+            The name of the assembly containing the task
+            </summary>
         <value>The <c>AssemblyName</c> attribute value of the <c>UsingTask</c> element.</value>
         <remarks>To be added.</remarks>
+        <owner>LukaszG</owner>
       </Docs>
     </Member>
     <Member MemberName="Condition">
@@ -79,14 +91,18 @@
         <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>3.5.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
+        <AssemblyVersion>15.1.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.String</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>Gets the <c>Condition</c> attribute value of the <see href="/visualstudio/msbuild/usingtask-element-msbuild">UsingTask</see> element.</summary>
+        <summary>
+            The condition string for this UsingTask
+            </summary>
         <value>The <c>Condition</c> attribute value of the <c>UsingTask</c> element.</value>
         <remarks>To be added.</remarks>
+        <owner>LukaszG</owner>
       </Docs>
     </Member>
     <Member MemberName="IsImported">
@@ -102,6 +118,7 @@
         <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>3.5.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
+        <AssemblyVersion>15.1.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Attributes>
         <Attribute FrameworkAlternate="netframework-4.0">
@@ -112,10 +129,13 @@
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>Gets a value indicating whether the <see href="/visualstudio/msbuild/usingtask-element-msbuild">UsingTask</see> element was imported into the project.</summary>
+        <summary>
+            Returns true if this UsingTask was imported from another project
+            </summary>
         <value>
           <see langword="true" /> if the <c>UsingTask</c> element was imported into the project; otherwise, <see langword="false" />.</value>
         <remarks>To be added.</remarks>
+        <owner>LukaszG</owner>
       </Docs>
     </Member>
     <Member MemberName="TaskName">
@@ -131,14 +151,18 @@
         <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>3.5.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
+        <AssemblyVersion>15.1.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.String</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>Gets the <c>TaskName</c> attribute value of the <see href="/visualstudio/msbuild/usingtask-element-msbuild">UsingTask</see> element.</summary>
+        <summary>
+            The task name
+            </summary>
         <value>The <c>TaskName</c> attribute value of the <c>UsingTask</c> element.</value>
         <remarks>To be added.</remarks>
+        <owner>LukaszG</owner>
       </Docs>
     </Member>
   </Members>

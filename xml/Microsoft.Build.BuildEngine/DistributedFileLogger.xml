@@ -9,6 +9,7 @@
     <AssemblyName>Microsoft.Build.Engine</AssemblyName>
     <AssemblyVersion>3.5.0.0</AssemblyVersion>
     <AssemblyVersion>4.0.0.0</AssemblyVersion>
+    <AssemblyVersion>15.1.0.0</AssemblyVersion>
   </AssemblyInfo>
   <Base>
     <BaseTypeName>System.Object</BaseTypeName>
@@ -25,7 +26,9 @@
     </Interface>
   </Interfaces>
   <Docs>
-    <summary>Represents a text file that contains the build log for a build node.</summary>
+    <summary>
+            This class will create a text file which will contain the build log for that node
+            </summary>
     <remarks>To be added.</remarks>
   </Docs>
   <Members>
@@ -40,10 +43,13 @@
         <AssemblyName>Microsoft.Build.Engine</AssemblyName>
         <AssemblyVersion>3.5.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
+        <AssemblyVersion>15.1.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Parameters />
       <Docs>
-        <summary>Initializes a new instance of the <see cref="T:Microsoft.Build.BuildEngine.DistributedFileLogger" /> class.</summary>
+        <summary>
+            Default constructor.
+            </summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -62,6 +68,7 @@
         <AssemblyName>Microsoft.Build.Engine</AssemblyName>
         <AssemblyVersion>3.5.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
+        <AssemblyVersion>15.1.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Attributes>
         <Attribute FrameworkAlternate="netframework-4.0">
@@ -104,6 +111,7 @@
         <AssemblyName>Microsoft.Build.Engine</AssemblyName>
         <AssemblyVersion>3.5.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
+        <AssemblyVersion>15.1.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -132,6 +140,7 @@
         <AssemblyName>Microsoft.Build.Engine</AssemblyName>
         <AssemblyVersion>3.5.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
+        <AssemblyVersion>15.1.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Attributes>
         <Attribute FrameworkAlternate="netframework-4.0">
@@ -167,6 +176,7 @@
         <AssemblyName>Microsoft.Build.Engine</AssemblyName>
         <AssemblyVersion>3.5.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
+        <AssemblyVersion>15.1.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Attributes>
         <Attribute FrameworkAlternate="netframework-4.0">
@@ -200,6 +210,7 @@
         <AssemblyName>Microsoft.Build.Engine</AssemblyName>
         <AssemblyVersion>3.5.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
+        <AssemblyVersion>15.1.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Attributes>
         <Attribute FrameworkAlternate="netframework-4.0">
@@ -233,6 +244,7 @@
         <AssemblyName>Microsoft.Build.Engine</AssemblyName>
         <AssemblyVersion>3.5.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
+        <AssemblyVersion>15.1.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -258,6 +270,7 @@
         <AssemblyName>Microsoft.Build.Engine</AssemblyName>
         <AssemblyVersion>3.5.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
+        <AssemblyVersion>15.1.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>Microsoft.Build.Framework.LoggerVerbosity</ReturnType>

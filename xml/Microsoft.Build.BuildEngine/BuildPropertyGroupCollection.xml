@@ -10,6 +10,7 @@
     <AssemblyVersion>2.0.0.0</AssemblyVersion>
     <AssemblyVersion>3.5.0.0</AssemblyVersion>
     <AssemblyVersion>4.0.0.0</AssemblyVersion>
+    <AssemblyVersion>15.1.0.0</AssemblyVersion>
   </AssemblyInfo>
   <Base>
     <BaseTypeName>System.Object</BaseTypeName>
@@ -23,8 +24,17 @@
     </Interface>
   </Interfaces>
   <Docs>
-    <summary>Represents a collection of <see cref="T:Microsoft.Build.BuildEngine.BuildPropertyGroup" /> objects.</summary>
+    <summary>
+            This class represents a collection of persisted &lt;PropertyGroup&gt;'s.  Each
+            MSBuild project has exactly one BuildPropertyGroupCollection, which includes
+            all the imported PropertyGroups as well as the ones in the main project file.
+            
+            The implementation of this class is that it's basically a Facade.  It just
+            calls into the GroupingCollection within the Project to do it's work.  It
+            doesn't maintain any BuildPropertyGroup state on its own.
+            </summary>
     <remarks>To be added.</remarks>
+    <owner>DavidLe</owner>
   </Docs>
   <Members>
     <Member MemberName="CopyTo">
@@ -43,6 +53,7 @@
         <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>3.5.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
+        <AssemblyVersion>15.1.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -54,8 +65,12 @@
       <Docs>
         <param name="array">The one-dimensional <see cref="T:System.Array" /> that is the destination of the elements copied from <see cref="T:Microsoft.Build.BuildEngine.BuildPropertyGroupCollection" />. The <see cref="T:System.Array" /> must have zero-based indexing.</param>
         <param name="index">The zero-based index in <paramref name="array" /> at which copying begins.</param>
-        <summary>Copies the entire collection to a compatible one-dimensional <see cref="T:System.Array" />, starting at the specified index of the target array.</summary>
+        <summary>
+            This ICollection method copies the contents of this collection to an 
+            array.
+            </summary>
         <remarks>To be added.</remarks>
+        <owner>RGoel</owner>
       </Docs>
     </Member>
     <Member MemberName="Count">
@@ -74,12 +89,16 @@
         <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>3.5.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
+        <AssemblyVersion>15.1.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Int32</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>Gets a value indicating the number of <see cref="T:Microsoft.Build.BuildEngine.BuildPropertyGroup" /> objects in the collection.</summary>
+        <summary>
+            Read-only property which returns the number of PropertyGroups contained
+            in our collection.
+            </summary>
         <value>An integer value representing the number of <see cref="T:Microsoft.Build.BuildEngine.BuildPropertyGroup" /> objects in the collection.</value>
         <remarks>
           <format type="text/markdown"><![CDATA[  
@@ -89,6 +108,7 @@
   
  ]]></format>
         </remarks>
+        <owner>RGoel</owner>
       </Docs>
     </Member>
     <Member MemberName="GetEnumerator">
@@ -107,13 +127,18 @@
         <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>3.5.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
+        <AssemblyVersion>15.1.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Collections.IEnumerator</ReturnType>
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>Gets an enumerator that iterates through the <see cref="T:Microsoft.Build.BuildEngine.BuildPropertyGroupCollection" />.</summary>
+        <summary>
+            This IEnumerable method returns an IEnumerator object, which allows
+            the caller to enumerate through the BuildPropertyGroup objects contained in
+            this BuildPropertyGroupCollection.
+            </summary>
         <returns>An <see cref="T:System.Collections.IEnumerator" /> for the entire <see cref="T:Microsoft.Build.BuildEngine.BuildPropertyGroupCollection" />.</returns>
         <remarks>
           <format type="text/markdown"><![CDATA[  
@@ -123,6 +148,7 @@
   
  ]]></format>
         </remarks>
+        <owner>RGoel</owner>
       </Docs>
     </Member>
     <Member MemberName="IsSynchronized">
@@ -141,15 +167,19 @@
         <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>3.5.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
+        <AssemblyVersion>15.1.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>Gets a value indicating whether access to the <see cref="T:Microsoft.Build.BuildEngine.BuildPropertyGroupCollection" /> is synchronized (thread safe).</summary>
+        <summary>
+            This ICollection property tells whether this object is thread-safe.
+            </summary>
         <value>
           <see langword="true" /> if access to the <see cref="T:Microsoft.Build.BuildEngine.BuildPropertyGroupCollection" /> is synchronized (thread safe); otherwise, <see langword="false" />. The default is <see langword="false" />.</value>
         <remarks>To be added.</remarks>
+        <owner>RGoel</owner>
       </Docs>
     </Member>
     <Member MemberName="SyncRoot">
@@ -168,14 +198,19 @@
         <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>3.5.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
+        <AssemblyVersion>15.1.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Object</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>Gets an object that can be used to synchronize access to the <see cref="T:Microsoft.Build.BuildEngine.BuildPropertyGroupCollection" />.</summary>
+        <summary>
+            This ICollection property returns the object to be used to synchronize
+            access to the class.
+            </summary>
         <value>An object that can be used to synchronize access to the <see cref="T:Microsoft.Build.BuildEngine.BuildPropertyGroupCollection" />.</value>
         <remarks>To be added.</remarks>
+        <owner>RGoel</owner>
       </Docs>
     </Member>
   </Members>
